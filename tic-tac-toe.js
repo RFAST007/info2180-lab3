@@ -53,3 +53,40 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Check for a win after each move
+document.addEventListener('DOMContentLoaded', function() {
+    const squares = document.querySelectorAll('#board div');
+    const status = document.getElementById('status');
+    const board = document.getElementById('board');
+    const winningCombos = [
+        [0,1,2],[3,4,5],[6,7,8],
+        [0,3,6],[1,4,7],[2,5,8],
+        [0,4,8],[2,4,6]
+    ];
+    let gameOver = false;
+
+    function checkWinner() {
+        const values = Array.from(squares).map(s => s.textContent);
+        for (const [a,b,c] of winningCombos) {
+            if (values[a] && values[a] === values[b] && values[a] === values[c]) {
+                const winner = values[a];
+                status.textContent = `Congratulations! ${winner} is the Winner!`;
+                status.classList.add('you-won');
+                board.style.pointerEvents = 'none'; // stop further moves
+                gameOver = true;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // run check after each click (this listener runs after the existing click handlers)
+    squares.forEach(function(square) {
+        square.addEventListener('click', function() {
+            if (!gameOver) {
+                checkWinner();
+            }
+        });
+    });
+});
