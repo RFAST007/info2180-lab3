@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
     })
 });
 
+// When a square is clicked, it should display an "X" or an "O", depending on whose turn it is.
 document.addEventListener('DOMContentLoaded', function() {
     const squares = document.querySelectorAll('#board div');
     let currentPlayer = 'X';
@@ -22,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 trackGame[index] = currentPlayer;
 
                 // Alternate player
-                //currentPlayer = (currentPlayer === 'X') ? 'O' : 'X';
+                
                 if (currentPlayer === 'X') {
                     currentPlayer = 'O';
                 } else {
@@ -37,3 +38,18 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+// hover effect to indicate which square is being hovered over
+document.addEventListener('DOMContentLoaded', function() {
+    const squares = document.querySelectorAll('#board div');
+    let hov = document.getElementById('hover');
+    squares.forEach(function(square) {
+        square.addEventListener('mouseover', function() {
+            if (square.textContent == "") { // Only show hover if square is empty
+                square.classList.add('hover');
+            }
+        });
+        square.addEventListener('mouseout', function() {
+            square.classList.remove('hover');
+        });
+    });
+});
