@@ -9,50 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
     })
 });
 
-/* When a square is clicked, it should display an "X" or an "O", depending on whose turn it is.
-document.addEventListener('DOMContentLoaded', function() {
-    const squares = document.querySelectorAll('#board div');
-    let currentPlayer = 'X';
-    let trackGame = []; // Track X/O in each square
 
-    squares.forEach(function(square, index) {
-        square.addEventListener('click', function() {
-            if (square.textContent=="") { // Only allow click if square is empty
-                square.textContent = currentPlayer;
-                square.classList.add(currentPlayer);
-                trackGame[index] = currentPlayer;
-
-                // Alternate player
-                
-                if (currentPlayer === 'X') {
-                    currentPlayer = 'O';
-                } else {
-                    currentPlayer = 'X';
-                }
-            }
-
-        
-    console.log(square)
-        });
-    });
-});*/
-
-
-/* hover effect to indicate which square is being hovered over
-document.addEventListener('DOMContentLoaded', function() {
-    const squares = document.querySelectorAll('#board div');
-    let hov = document.getElementById('hover');
-    squares.forEach(function(square) {
-        square.addEventListener('mouseover', function() {
-            if (square.textContent == "") { // Only show hover if square is empty
-                square.classList.add('hover');
-            }
-        });
-        square.addEventListener('mouseout', function() {
-            square.classList.remove('hover');
-        });
-    });
-});*/
 
 // Check for a win after each move and the full main code together
 document.addEventListener('DOMContentLoaded', function() {
@@ -129,6 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // New Game button functionality
     newButton.addEventListener('click', function() {
         // Clear all squares
         squares.forEach(function(square) {
@@ -148,25 +106,3 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-/*document.addEventListener('DOMContentLoaded', function() {
-    const newButton = document.querySelector('.btn'); // selects the first element with class "btn"
-    const squares = document.querySelectorAll('#board div');
-    const status = document.getElementById('status');
-    const board = document.getElementById('board');
-    newButton.addEventListener('click', function() {
-        // Clear all squares
-        squares.forEach(function(square) {
-            square.textContent = '';
-            square.classList.remove('X', 'O');
-        });
-        // Reset status message
-        status.textContent = "Move your mouse over a square and click to play an X or an O.";
-        status.classList.remove('you-won');
-        // Re-enable board interaction
-        board.style.pointerEvents = 'auto';
-        gameOver = false;
-        
-        
-    }
-    );
-});*/
